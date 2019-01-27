@@ -37,13 +37,16 @@ char **initialise_board(){
     return  board;
 }
 
+//
+// print_board() - prints the current state of the board
+//
 void print_board(char **gameboard){
     for (int i = 0; i < 3 ; i++){
         for (int j = 0; j < 3; j++) {
             printf(" %c ", gameboard[i][j]);
-            if (j == 2){
+            if (j == 2){ //to make sure this only happens at the end of the line
                 printf("\n");
-                if (i != 2) {
+                if (i != 2) { //to make sure this doesn't happen after the last row
                     print_horizontal_lines();
                 }
             } else{
@@ -51,6 +54,16 @@ void print_board(char **gameboard){
             }
         }
     }
+}
+
+//
+// Frees all memory associated with the board
+//
+void free_board(char **board){
+    for (int i = 0; i < 3; i++){
+        free(board[i]);
+    }
+    free(board);
 }
 
 

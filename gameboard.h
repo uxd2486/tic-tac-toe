@@ -21,6 +21,8 @@ char **initialise_board();
 //
 // print_board() - prints the current state of the board to stdin
 //
+// gameboard - the 2-D array of chars that has to be printed out
+//
 void print_board(char **gameboard);
 
 //
@@ -38,7 +40,9 @@ void print_board(char **gameboard);
 char **mark_board(char mark, int row, int col);
 
 //
-// free_board() - frees the memory where the gameboard is stored
+// free_board() - frees all memory associated with the gameboard
+//
+// gameboard - the 2-D array of chars that has to be free'd
 //
 void free_board(char **gameboard);
 
