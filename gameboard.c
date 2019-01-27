@@ -18,8 +18,8 @@
 //
 //                            followed by a newline character
 void print_horizontal_lines(){
-    for (int i = 0; i < 3; i++){
-        printf("_ ");
+    for (int i = 0; i < 6; i++){ //6 was chosen just so that the output looked nice
+        printf("- ");
     }
     printf("\n");
 }
@@ -40,9 +40,12 @@ char **initialise_board(){
 void print_board(char **gameboard){
     for (int i = 0; i < 3 ; i++){
         for (int j = 0; j < 3; j++) {
-            printf("%c ", gameboard[i][j]);
+            printf(" %c ", gameboard[i][j]);
             if (j == 2){
-                print_horizontal_lines();
+                printf("\n");
+                if (i != 2) {
+                    print_horizontal_lines();
+                }
             } else{
                 printf("|");
             }

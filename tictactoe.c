@@ -8,5 +8,11 @@
 #include "gameboard.h"
 
 int main( int argc, char *argv[] ){
-    print_board(initialise_board());
+    char **board = initialise_board();
+    for (int i = 0; i < 3 ; i++) {
+        for (int j = 0; j < 3; j++) {
+            board[i][j] = 'x';
+        }
+    }
+    print_board(board);
 }
