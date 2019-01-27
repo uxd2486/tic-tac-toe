@@ -7,6 +7,8 @@
 #ifndef TIC_TAC_TOE_GAMEBOARD_H
 #define TIC_TAC_TOE_GAMEBOARD_H
 
+#define BOARD_LENGTH 3
+
 //Function declarations
 
 //

@@ -30,9 +30,9 @@ void print_horizontal_lines(){
 // Creates the gameboard
 //
 char **initialise_board(){
-    char **board = calloc(9, sizeof(char) ); //the board is 3x3, hence 9 members
-    for (int i = 0; i < 3; i++){
-        board[i] = calloc(3, sizeof(char));
+    char **board = calloc(BOARD_LENGTH*BOARD_LENGTH, sizeof(char) );
+    for (int i = 0; i < BOARD_LENGTH; i++){
+        board[i] = calloc(BOARD_LENGTH, sizeof(char));
     }
     return  board;
 }
@@ -41,12 +41,12 @@ char **initialise_board(){
 // print_board() - prints the current state of the board
 //
 void print_board(char **gameboard){
-    for (int i = 0; i < 3 ; i++){
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < BOARD_LENGTH ; i++){
+        for (int j = 0; j < BOARD_LENGTH; j++) {
             printf(" %c ", gameboard[i][j]);
-            if (j == 2){ //to make sure this only happens at the end of the line
+            if (j == BOARD_LENGTH-1){ //to make sure this only happens at the end of the line
                 printf("\n");
-                if (i != 2) { //to make sure this doesn't happen after the last row
+                if (i != BOARD_LENGTH-1) { //to make sure this doesn't happen after the last row
                     print_horizontal_lines();
                 }
             } else{
@@ -60,7 +60,7 @@ void print_board(char **gameboard){
 // Frees all memory associated with the board
 //
 void free_board(char **board){
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < BOARD_LENGTH; i++){
         free(board[i]);
     }
     free(board);
