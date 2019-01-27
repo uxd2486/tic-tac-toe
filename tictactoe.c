@@ -5,7 +5,8 @@
 //
 
 #include <stdio.h>
+#include "gameboard.h"
 
 int main( int argc, char *argv[] ){
-    return 0;
+    print_board(initialise_board());
 }

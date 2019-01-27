@@ -12,7 +12,7 @@
 //
 // initialise_board() - creates the gameboard as a 2-D array of characters and
 //                      returns it. Initially, it will be populated with the
-//                      null character
+//                      '-' character
 //
 // return - the gameboard
 //

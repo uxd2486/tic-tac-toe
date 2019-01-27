@@ -31,10 +31,13 @@ void print_horizontal_lines(){
 //
 char **initialise_board(){
     char **board = calloc(9, sizeof(char) ); //the board is 3x3, hence 9 members
-    return board;
+    for (int i = 0; i < 3; i++){
+        board[i] = calloc(3, sizeof(char));
+    }
+    return  board;
 }
 
-void print_board(char ** gameboard){
+void print_board(char **gameboard){
     for (int i = 0; i < 3 ; i++){
         for (int j = 0; j < 3; j++) {
             printf("%c ", gameboard[i][j]);
