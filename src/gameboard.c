@@ -57,6 +57,14 @@ void print_board(char **gameboard){
 }
 
 //
+// marks the gameboard with the character
+//
+char **mark_board(char mark, int row, int col, char **gameboard){
+    gameboard[row][col] = mark;
+    return gameboard;
+}
+
+//
 // Frees all memory associated with the board
 //
 void free_board(char **board){
@@ -65,5 +73,4 @@ void free_board(char **board){
     }
     free(board);
 }
-
 

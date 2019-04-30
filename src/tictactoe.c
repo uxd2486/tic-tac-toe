@@ -11,8 +11,9 @@ int main( int argc, char *argv[] ){
     char **board = initialise_board();
     for (int i = 0; i < 3 ; i++) {
         for (int j = 0; j < 3; j++) {
-            board[i][j] = 'x';
+            mark_board('x',i,j,board);
         }
     }
     print_board(board);
+    free_board(board);
 }

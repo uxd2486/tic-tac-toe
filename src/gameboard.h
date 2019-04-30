@@ -36,10 +36,11 @@ void print_board(char **gameboard);
 // mark - the mark to be made on the board('x' or 'o')
 // row - int that specifies the row for the mark to be made
 // col - int that specifies the column for the mark to be made
+// gameboard - the gameboard which has to be changed
 //
 // return - the gameboard, after making the change
 //
-char **mark_board(char mark, int row, int col);
+char **mark_board(char mark, int row, int col, char **gameboard);
 
 //
 // free_board() - frees all memory associated with the gameboard
