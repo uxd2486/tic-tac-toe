@@ -34,6 +34,11 @@ char **initialise_board(){
     for (int i = 0; i < BOARD_LENGTH; i++){
         board[i] = calloc(BOARD_LENGTH, sizeof(char));
     }
+    for (int i = 0; i < BOARD_LENGTH ; i++) {
+        for (int j = 0; j < BOARD_LENGTH; j++) {
+            mark_board('-',i,j,board);
+        }
+    }
     return  board;
 }
 
