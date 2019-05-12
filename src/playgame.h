@@ -5,6 +5,6 @@
 #ifndef TICTACTOE_PLAYGAME_H
 #define TICTACTOE_PLAYGAME_H
 
-void start(char **board);
+void start();
 
 #endif //TICTACTOE_PLAYGAME_H

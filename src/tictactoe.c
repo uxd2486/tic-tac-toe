@@ -5,7 +5,6 @@
 //
 
 #include <stdio.h>
-#include "gameboard.h"
 #include "playgame.h"
 
 int main( int argc, char *argv[] ){
@@ -15,7 +14,5 @@ int main( int argc, char *argv[] ){
     printf("The rows and columns start at 0, so the top left entry is 0,0 and the bottom right entry is 2,2.\n");
     printf("By default, the first player is always 'o'.\n");
     printf("Please press enter to start the game.\n");
-    //char **board = initialise_board();
-    //print_board(board);
-    //free_board(board);
+    start();
 }
