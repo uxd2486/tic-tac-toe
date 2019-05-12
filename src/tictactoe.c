@@ -12,7 +12,7 @@ int main( int argc, char *argv[] ){
     printf("How to play:\n");
     printf("When prompted, enter the row and column of the place where you wish to mark the board.\n");
     printf("The rows and columns start at 0, so the top left entry is 0,0 and the bottom right entry is 2,2.\n");
-    printf("By default, the first player is always 'o'.\n");
+    printf("By default, the first player is always 'x'.\n");
     printf("Please press enter to start the game.\n");
     start();
 }

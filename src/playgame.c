@@ -30,7 +30,7 @@ int check(char *row){
 int isGameOver(char **board){
     //check every row
     for (int i = 0; i < BOARD_LENGTH; i++){
-        if (check(board[i])){
+        if (!check(board[i])){
             return board[i][0];
         }
     }
@@ -54,26 +54,41 @@ int isGameOver(char **board){
             return board[0][2];
         }
     }
-    return 0;
+    return '-';
 }
 
-/**
- * Prints out who the winner of the game is.
- *
- * @param board the gameboard used to check who the winner is
- */
-void printWinner(char **board){}
+char changePlayer(char *currentPlayer){
+    switch (*currentPlayer){
+        case 'x': return 'o';
+        case 'o': return 'x';
+        default: printf("Something went wrong.");
+    }
+}
 
 void start(){
     char **board = initialise_board();
-    char *player = calloc(1,sizeof(char));
-    char *winner = "-";
-    while (*winner){
-        printf("Suck it");
-        *winner = (char) isGameOver(board);
+    char *player = malloc(sizeof(char));
+    char *winner = malloc(sizeof(char));
+    *winner = '-';
+    *player = 'x';
+    while (*winner == '-'){
+        print_board(board);
+        printf("Current player: %c\n",*player);
+        printf("Please enter the row and column: ");
+        int *row = malloc(sizeof(int));
+        int *column = malloc(sizeof(int));
+        char *input = calloc(3, sizeof(char));
+        scanf("%s",input);
+        int success = sscanf(input,"%d,%d",row,column);
+        if (success == 2){
+            printf("Turn successful!");
+            *player = changePlayer(player);
+            *winner = (char) isGameOver(board);
+        } else {
+            printf("Input was incorrect. Please try again.");
+        }
     }
-    printf(winner);
-    printWinner(board);
+    printf("%s",winner);
     free(player);
     free_board(board);
 }
