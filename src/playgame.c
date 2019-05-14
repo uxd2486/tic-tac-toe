@@ -10,7 +10,7 @@
 int check(char *row){
     if (row[0] == row[1]){
         if (row[1] == row[2]){
-            if (row[2] != '-'){
+            if (row[2] != DEFAULT_BOARD_ENTRY){
                 return 0;
             }
         }
@@ -36,25 +36,25 @@ int isGameOver(char **board){
     }
     //check every column
     for (int j = 0; j < BOARD_LENGTH; j++){
-        if (board[0][j] != '-'){
+        if (board[0][j] != DEFAULT_BOARD_ENTRY){
             if (board[0][j] == board[1][j] && board[1][j] == board[2][j]){
                 return board[0][j];
             }
         }
     }
     //check the main diagonal(left to right)
-    if (board[0][0] != '-'){
-        if (board[0][0] == board[1][1] && board[2][2]){
+    if (board[0][0] != DEFAULT_BOARD_ENTRY){
+        if (board[0][0] == board[1][1] && board[2][2] == board[1][1]){
             return board[0][0];
         }
     }
     //check the other diagonal(right to left)
-    if (board[0][2] != '-'){
-        if (board[0][2] == board[1][1] && board[2][0]){
+    if (board[0][2] != DEFAULT_BOARD_ENTRY){
+        if (board[0][2] == board[1][1] && board[2][0] == board[1][1]){
             return board[0][2];
         }
     }
-    return '-';
+    return DEFAULT_BOARD_ENTRY;
 }
 
 char changePlayer(char *currentPlayer){
@@ -69,26 +69,36 @@ void start(){
     char **board = initialise_board();
     char *player = malloc(sizeof(char));
     char *winner = malloc(sizeof(char));
-    *winner = '-';
+    *winner = DEFAULT_BOARD_ENTRY;
     *player = 'x';
-    while (*winner == '-'){
+    int row, column;
+    char *input = calloc(10, sizeof(char));
+    while (*winner == DEFAULT_BOARD_ENTRY){
         print_board(board);
         printf("Current player: %c\n",*player);
         printf("Please enter the row and column: ");
-        int *row = malloc(sizeof(int));
-        int *column = malloc(sizeof(int));
-        char *input = calloc(3, sizeof(char));
-        scanf("%s",input);
-        int success = sscanf(input,"%d,%d",row,column);
-        if (success == 2){
-            printf("Turn successful!");
-            *player = changePlayer(player);
-            *winner = (char) isGameOver(board);
+        fgets(input,10,stdin);
+        int scanResult = sscanf(input,"%d,%d",&row,&column);
+        if (scanResult == 2){
+
+            int success = mark_board(*player,row,column,board);
+            if (success == 0){
+                printf("Turn successful!\n");
+                *player = changePlayer(player);
+                *winner = (char) isGameOver(board);
+            } else if (success == 1){
+                printf("Please enter row and column less than 3.\n");
+            } else {
+                printf("You cannot mark a place that has already been marked.\n");
+            }
         } else {
-            printf("Input was incorrect. Please try again.");
+            printf("Input was incorrect. Please try again.\n");
         }
     }
-    printf("%s",winner);
+    print_board(board);
+    printf("Player %s has won the game!\n",winner);
+    free(input);
+    free(winner);
     free(player);
     free_board(board);
 }

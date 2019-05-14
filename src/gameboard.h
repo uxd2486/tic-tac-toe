@@ -8,6 +8,7 @@
 #define TIC_TAC_TOE_GAMEBOARD_H
 
 #define BOARD_LENGTH 3
+#define DEFAULT_BOARD_ENTRY '-'
 
 //Function declarations
 
@@ -40,7 +41,7 @@ void print_board(char **gameboard);
 //
 // return - the gameboard, after making the change
 //
-char **mark_board(char mark, int row, int col, char **gameboard);
+int mark_board(char mark, int row, int col, char **gameboard);
 
 //
 // free_board() - frees all memory associated with the gameboard

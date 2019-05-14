@@ -36,7 +36,7 @@ char **initialise_board(){
     }
     for (int i = 0; i < BOARD_LENGTH ; i++) {
         for (int j = 0; j < BOARD_LENGTH; j++) {
-            mark_board('-',i,j,board);
+            board[i][j] = DEFAULT_BOARD_ENTRY;
         }
     }
     return  board;
@@ -64,9 +64,15 @@ void print_board(char **gameboard){
 //
 // marks the gameboard with the character
 //
-char **mark_board(char mark, int row, int col, char **gameboard){
-    gameboard[row][col] = mark;
-    return gameboard;
+int mark_board(char mark, int row, int col, char **gameboard){
+    if (row >= BOARD_LENGTH || col >= BOARD_LENGTH){
+        return 1;
+    } else if (gameboard[row][col] != DEFAULT_BOARD_ENTRY){
+        return 2;
+    } else {
+        gameboard[row][col] = mark;
+        return 0;
+    }
 }
 
 //
