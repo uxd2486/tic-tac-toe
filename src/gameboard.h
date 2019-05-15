@@ -31,8 +31,8 @@ void print_board(char **gameboard);
 //
 // mark_board() - changes the board at the location specified by row and col
 //                to the symbol given by mark.
-//                row and col must be greater than or equal to 0
-//                mark must be either 'x' or 'o'
+//                row and col must be greater than or equal to 0.
+//                mark must be either 'x' or 'o'.
 //
 // mark - the mark to be made on the board('x' or 'o')
 // row - int that specifies the row for the mark to be made

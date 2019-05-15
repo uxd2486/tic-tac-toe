@@ -14,4 +14,5 @@ int main( int argc, char *argv[] ){
     printf("The rows and columns start at 0, so the top left entry is 0,0 and the bottom right entry is 2,2.\n");
     printf("By default, the first player is always 'x'.\n");
     start();
+    printf("Thank you for playing!");
 }

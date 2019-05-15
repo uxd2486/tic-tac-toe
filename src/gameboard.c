@@ -65,7 +65,9 @@ void print_board(char **gameboard){
 // marks the gameboard with the character
 //
 int mark_board(char mark, int row, int col, char **gameboard){
-    if (row >= BOARD_LENGTH || col >= BOARD_LENGTH){
+    if (row < 0 || col < 0){
+        return -1;
+    } else if (row >= BOARD_LENGTH || col >= BOARD_LENGTH){
         return 1;
     } else if (gameboard[row][col] != DEFAULT_BOARD_ENTRY){
         return 2;
